@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+{% block title %}Admin Dashboard{% endblock title %}
+
+{% block myscript %}
+    $(document).ready(function() 
+		{
+            $(".navbar-nav > li > a").removeClass("active");
+            $("#adminnav").addClass("active");
+       });
+{% endblock myscript %}
+
+
+{% block content %}
+    <section id="loginForm">
+        <div class="container loginContainer">
+            <div class="row my-3">
+                <div class="col-sm-6 offset-sm-3">
+                    <form action="{% url 'logout' %}" method="POST" novalidate class="shadow p-5">
+                        <h3>Admin Section</h3>
+                        <hr>
+                        {% csrf_token %}
+                        <div class="alert-danger text-center">
+                            <h4 class="email">E-mail : {{user.email}}</h4>
+                        </div>
+                        <br>
+                        <input type="submit" value="logout" class="btn btnlibrary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% comment %} {% if request.user %}
+    {{user.email}}
+{% endif %}
+<h3>yaman bisen</h3> {% endcomment %}
+<script>window.location.href = "login/";</script>

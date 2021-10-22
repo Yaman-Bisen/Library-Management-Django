@@ -1,0 +1,50 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <section class="sec1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="{% static 'app/images/lib.png' %}" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        <div class='bottom alert alert-success text-center mt-5'>
+            <h3>MyLibrary: Sign up to start Managing your Library : <a href="{% url 'register' %}" class="btn btnlibrary">Sign Up</a></h3>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container text-center">
+            <h1 class="title">MyLibrary</h1>
+            <div class="row text-center">
+                <div class="col-md-4 services">
+                    <img src="{% static 'app/images/addbook.png' %}" class="service-img" alt="">
+                    <h4><a href="{% url 'addbook' %}">Add Books</a></h4>
+                    <p>Create your own library by adding books to it, with all the details of the book like, bookname, Author name, etc...</p>
+                </div>
+
+                 <div class="col-md-4 services">
+                    <img src="{% static 'app/images/updatebook.png' %}" class="service-img" alt="">
+                    <h4><a href="{% url 'updatebook' %}"> Update Books</a></h4>
+                    <p>Change the book details of any book on button click, you can change any details of the book.</p>
+                </div>
+
+                 <div class="col-md-4 services">
+                    <img src="{% static 'app/images/deletebook.png' %}" class="service-img" alt="">
+                    <h4><a href="{% url 'deletebook' %}">Delete Books</a></h4>
+                    <p>If book is get older, or not in demand you can delete the not required book anytime...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="login">
+        <div class="container-fluid text-center fw-bold alert alert-danger">
+            <p class="mt-4">MyLibrary: Login to start Managing...  <a href="{% url 'login' %}" class="btn btnlibrary">Login</a></p>
+        </div>
+    </section>
+{% endblock content %}

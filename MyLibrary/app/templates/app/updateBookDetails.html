@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{% block title %}Update Book{% endblock title %}
+
+{% block myscript %}
+    $(document).ready(function() 
+    {
+        $(".navbar-nav > li > a").removeClass("active");
+        $("#updatenav").addClass("active");
+    });
+{% endblock myscript %}
+
+{% block content %}
+    <section id="loginForm">
+        <div class="container loginContainer">
+            <div class="row">
+                <div class="col-sm-7 mx-auto">
+                    <form action="" method="post" novalidate class="shadow p-5">
+                        {% csrf_token %}
+                        {% if mesg %}
+                            <div class="alert-warning text-center mb-4">
+                                <h4 class="email">{{mesg}}</h4>
+                            </div>
+                        {% endif %}
+                        <h3>Update Book</h3>
+                        <hr>
+                        <label for="">Book Name:</label>
+                        <input name="book_name" type="text" class="form-control" value="{{book_name}}"><br>
+                        <label for="">Author Name:</label>
+                        <input name="author_name" type="text" class="form-control" value="{{author_name}}"><br>
+                        <label for="">Quantity:</label>
+                        <input name="quantity" type="text" class="form-control" value="{{quantity}}">
+
+                        <input type="submit" value="Update Book" class="btn btn-primary mt-4">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

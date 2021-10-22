@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+{% block title %}View Books{% endblock title %}
+
+{% block myscript %}
+    $(document).ready(function() 
+    {
+        $(".navbar-nav > li > a").removeClass("active");
+        $("#viewnav").addClass("active");
+    });
+{% endblock myscript %}
+
+{% block content %}
+    <section id="loginForm">
+        <div class="container loginContainer">
+            {% if data %}
+                <h2>All Books</h2>
+                <table class="table table-bordered table-striped table-responsive-stack" id="tableOne">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Book Name</th>
+                            <th>Author Name</th>
+                            <th>Quantity</th>
+                            <th>Date+Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key in data %}
+                            <tr>
+                                {% for k,v in key.items %}
+                                    <td>{{v}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert-warning text-center col-md-5 mx-auto">
+                    <h3 class="email">No Books are added yet !!!</h3>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}

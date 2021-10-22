@@ -1,0 +1,43 @@
+{% extends 'app/base.html' %}
+{% block title %}Add Book{% endblock title %}
+
+{% block myscript %}
+    $(document).ready(function() 
+    {
+        $(".navbar-nav > li > a").removeClass("active");
+        $("#addnav").addClass("active");
+    });
+{% endblock myscript %}
+
+{% block content %}
+    <section id="loginForm">
+        <div class="container loginContainer">
+            <div class="row">
+                <div class="col-sm-7 mx-auto">
+                    <form action="" method="post" novalidate class="shadow p-5">
+                        <h3>Add Book</h3>
+                        <hr>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p {% if message.tags %} class = "alert alert-{{message.tags}} mb-5"{% endif %}>{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% csrf_token %}
+                        {% for fm in form %}
+                            <div class="form-group mb-3">
+                                {{fm.label_tag}}&emsp;<small class="fw-bold text-danger">{{fm.errors|striptags}}</small> {{fm}} 
+                            </div>
+                        {% endfor %}
+                        <input type="submit" value="Add Book" class="btn btn-primary mt-4">
+                        <br>
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <p class="alert alert-danger my-3">{{error}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
